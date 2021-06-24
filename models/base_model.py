@@ -12,12 +12,7 @@ class BaseModel:
         self.updated_at = datetime.now()
         
         if kwargs is not None:
-            #dans la sortie, self.created_at & self.updated_at sont str
-            #hors, on veut en datetime
-            #si j'enlève cette condition, ça fonctionne comme il faut
-            #j'ai essayé avec la ligne d'en dessous mais là je vais me coucher
-            self.created_at = datetime.strptime(self.created_at, '%Y/%m/%d/%H/%M/%S/%f') #Ne fonctionne pas
-            self.__dict__.update(kwargs) # Si j'ai bien compris, cette ligne est ok
+            self.__dict__.update(kwargs) 
         
         else:
             self.id = str(uuid4())
@@ -31,8 +26,9 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        self.created_at = self.created_at.isoformat()
-        self.updated_at = self.updated_at.isoformat()
+        new_dict = self.__dict__.copy()
+        new_dict["created_at"] = self.created_at.isoformat()
+        new_dict["updated_at"] = self.updated_at.isoformat()
         key = self.__class__.__name__
         for key in self.__dict__.keys():
             return self.__dict__
