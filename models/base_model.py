@@ -2,6 +2,7 @@
 
 from uuid import uuid4
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -14,16 +15,20 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
-                    new_value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    new_value = datetime.strptime(
+                        value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, new_value)
                 elif key != "__class__":
                     setattr(self, key, value)
+
+        storage.new(self)
 
     def __str__(self):
         return "[{}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         new_dict = {}
@@ -37,4 +42,3 @@ class BaseModel:
             else:
                 new_dict[key] = value
         return new_dict
-
