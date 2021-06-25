@@ -37,3 +37,4 @@ class BaseModel:
             else:
                 new_dict[key] = value
         return new_dict
+
