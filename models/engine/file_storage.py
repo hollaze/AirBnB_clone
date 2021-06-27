@@ -8,7 +8,8 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        return self.__objects
+        for key, value in self.__objects:
+            return self.__objects
 
     def new(self, obj):
         self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
@@ -17,14 +18,13 @@ class FileStorage:
         save_obj = {}
         for key in self.__objects:
             save_obj[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, 'w') as file:
+        with open(self.__file_path, 'a', encoding='utf-8') as file:
             json.dump(save_obj, file)
 
     def reload(self):
         try:
             if self.__file_path:
-                with open(self.__file_path, 'r') as file:
-                    file = json.load(file)
+                with open(self.__file_path, 'r', encoding='utf-8') as file:
+                    json.load(file)
         except:
             pass
-
