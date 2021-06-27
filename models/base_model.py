@@ -31,9 +31,15 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        rdict = self.__dict__.copy()
-        rdict["created_at"] = self.created_at.isoformat()
-        rdict["updated_at"] = self.updated_at.isoformat()
-        rdict["__class__"] = self.__class__.__name__
-        return rdict
+        new_dict = {}
+        new_dict["__class__"] = self.__class__.__name__
+
+        for key, value in self.__dict__.items():
+            if not value:
+                continue
+            if key == "created_at" or key == "updated_at":
+                new_dict[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
+            else:
+                new_dict[key] = value
+        return new_dict
 
