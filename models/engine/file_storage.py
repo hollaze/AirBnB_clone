@@ -24,7 +24,6 @@ class FileStorage:
 
     def reload(self):
         try:
-            from models.base_model import BaseModel
             with open(self.__file_path, 'r') as file:
                 dict_file = {}
                 dict_file = json.load(file)
