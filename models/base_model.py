@@ -2,7 +2,7 @@
 
 from uuid import uuid4
 from datetime import datetime
-from models import storage
+import models
 
 
 class BaseModel:
@@ -21,24 +21,19 @@ class BaseModel:
                 elif key != "__class__":
                     setattr(self, key, value)
 
-        storage.new(self)
+        models.storage.new(self)
 
     def __str__(self):
         return "[{}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
-        new_dict = {}
-        new_dict["__class__"] = self.__class__.__name__
+        rdict = self.__dict__.copy()
+        rdict["created_at"] = self.created_at.isoformat()
+        rdict["updated_at"] = self.updated_at.isoformat()
+        rdict["__class__"] = self.__class__.__name__
+        return rdict
 
-        for key, value in self.__dict__.items():
-            if not value:
-                continue
-            if key == "created_at" or key == "updated_at":
-                new_dict[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
-            else:
-                new_dict[key] = value
-        return new_dict
