@@ -4,26 +4,31 @@ import json
 
 
 class FileStorage:
-    __file_path = "file_storage.json"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
         return self.__objects
 
     def new(self, obj):
-        self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
+        new_obj = obj.__class__.__name__ + "." + obj.id
+        self.__objects[new_obj] = obj
 
     def save(self):
-        save_obj = {}
+        file_obj = {}
         for key in self.__objects:
-            save_obj[key] = self.__objects[key].to_dict()
-        with open(self.__file_path, 'a', encoding='utf-8') as file:
-            json.dump(save_obj, file)
+            file_obj[key] = self.__objects[key].to_dict()
+        with open(self.__file_path, 'w') as file:
+            json.dump(file_obj, file)
 
     def reload(self):
         try:
-            if self.__file_path:
-                with open(self.__file_path, 'r', encoding='utf-8') as file:
-                    json.load(file)
-        except:
+            from models.base_model import BaseModel
+            with open(self.__file_path, 'r') as file:
+                dict_file = {}
+                dict_file = json.load(file)
+                for key, value in dict_file.items():
+                    self.__objects[key] = eval(value['class'])(**value)
+        except Exception:
             pass
+
