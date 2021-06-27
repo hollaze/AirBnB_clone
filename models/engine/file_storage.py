@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -28,7 +29,6 @@ class FileStorage:
                 dict_file = {}
                 dict_file = json.load(file)
                 for key, value in dict_file.items():
-                    self.__objects[key] = eval(value['class'])(**value)
+                    self.__objects[key] = eval(value['__class__'])(**value)
         except Exception:
             pass
-
