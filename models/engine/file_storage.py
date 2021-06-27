@@ -8,8 +8,7 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        for key, value in self.__objects:
-            return self.__objects
+        return self.__objects
 
     def new(self, obj):
         self.__objects[obj.__class__.__name__ + "." + obj.id] = obj
