@@ -3,7 +3,6 @@
 import json
 from models.base_model import BaseModel
 
-
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
@@ -12,6 +11,7 @@ class FileStorage:
         return self.__objects
 
     def new(self, obj):
+
         new_obj = obj.__class__.__name__ + "." + obj.id
         self.__objects[new_obj] = obj
 
@@ -24,11 +24,10 @@ class FileStorage:
 
     def reload(self):
         try:
-            from models.base_model import BaseModel
             with open(self.__file_path, 'r') as file:
                 dict_file = {}
                 dict_file = json.load(file)
                 for key, value in dict_file.items():
-                    self.__objects[key] = eval(value['__class__'])(**value)
+                    self.new(eval(value['__class__'])(**value)) 
         except Exception:
             pass
