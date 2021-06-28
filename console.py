@@ -13,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
     """
         Command line interpreter
     """
-    class_list = ['BaseModel', 'User']
+    class_list = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
     prompt = "(hbnb) "
     
     def __do_prompt(self, prompt):
@@ -116,6 +116,13 @@ class HBNBCommand(cmd.Cmd):
                 elif len(args_list) == 0:
                     obj_list.append(str(all_objs[key]))   
         print(obj_list)
+
+    def update(self, args):
+        """
+            Updates an instance based on the class name and id
+            by adding or updating attribute
+        """
+
         
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
