@@ -16,7 +16,6 @@ class HBNBCommand(cmd.Cmd):
     class_list = ['BaseModel', 'User']
     prompt = "(hbnb) "
     
-    
     def __do_prompt(self, prompt):
         """Change the interactive prompt:
             (hbnb) 
@@ -34,9 +33,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, arg):
-        """Quit the console:
-            write "quit"
-
+        """Quit command to exit the console
             Usage:
                     quit
         """
@@ -101,8 +98,24 @@ class HBNBCommand(cmd.Cmd):
             models.storage.save()
         else:
             print('** no instance found **')
+
+    def do_all(self, args):
+        """
+            Prints all string representation of all instances
+        """
+        args_list = args.split()        
+        obj_list = []
+        if args not in self.class_list and len(args_list) > 0:
+            print("** class doesn't exist **")
+        else:
+            all_objs = models.storage.all()
+            for key in all_objs.keys():
+                key_name_id = key.split('.')
+                if key_name_id[0] in self.class_list:
+                    obj_list.append(str(all_objs[key]))
+                elif len(args_list) == 0:
+                    obj_list.append(str(all_objs[key]))   
+        print(obj_list)
         
-
-
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
