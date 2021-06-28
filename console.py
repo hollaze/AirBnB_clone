@@ -44,7 +44,7 @@ class HBNBCommand(cmd.Cmd):
             it to a JSON file
 
             Usage:
-                    create <classname>
+                    create <class name>
         """
         if len(args) == 0:
             print('** class name missing **')
@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
             based on a class name
 
             Usage:
-                    show <classname> <id>
+                    show <class name> <id>
 
         """
         args_list = args.split()
@@ -83,7 +83,7 @@ class HBNBCommand(cmd.Cmd):
             Saves the change into the JSON file
 
             Usage:
-                    destroy <classname> <id>
+                    destroy <class name> <id>
         """
         args_list = args.split()
         objs_dict = models.storage.all()
@@ -117,12 +117,34 @@ class HBNBCommand(cmd.Cmd):
                     obj_list.append(str(all_objs[key]))   
         print(obj_list)
 
-    def update(self, args):
+    def do_update(self, args):
         """
             Updates an instance based on the class name and id
             by adding or updating attribute
-        """
 
-        
+            Usage:
+                    update <class name> <id> <attributate name> <"attribute value">
+
+        """
+        args_list = args.split()
+        objs_dict = models.storage.all()
+        if len(args_list) == 0:
+            print('** class name missing **')
+        elif args_list[0] not in self.class_list:
+            print("** class doesn't exist **")
+        elif len(args_list) == 1:
+            print('** instance id missing **')
+        elif "{}.{}".format(args_list[0], args_list[1]) not in objs_dict.keys():
+            print('** no instance found **')
+        elif len(args_list) == 2:
+            print('** attribute name missing **')
+        elif len(args_list) == 3:
+            print('** value missing **')
+        #else:
+
+            
+            
+            
+       
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
