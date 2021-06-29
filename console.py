@@ -177,7 +177,11 @@ class HBNBCommand(cmd.Cmd):
             print('** attribute name missing **')
         elif len(args_list) == 3:
             print('** value missing **')
-        # else:
+        else:
+            key = args_list[0] + '.' + args_list[1]
+            u = objs_dict[key]
+            u.__dict__[args_list[2]] = eval(args_list[3])
+            u.save()
 
     def do_EOF(self, arg):
         """
