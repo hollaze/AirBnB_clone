@@ -4,7 +4,12 @@
 """
 import cmd
 from models.base_model import BaseModel
-import sys
+from models.base_model import Place
+from models.base_model import City
+from models.base_model import User
+from models.base_model import State
+from models.base_model import Review
+from models.base_model import Amenity
 import models
 import models.engine
 
