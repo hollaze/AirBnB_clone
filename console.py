@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
                     obj_list.append(str(all_objs[key]))
                 elif len(args_list) == 0:
                     obj_list.append(str(all_objs[key]))
-        print(obj_list)
+            print(obj_list)
 
     def do_update(self, args):
         """
