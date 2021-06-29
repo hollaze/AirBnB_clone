@@ -2,12 +2,12 @@
 
 import json
 from models.base_model import BaseModel
-from models.base_model import Place
-from models.base_model import City
-from models.base_model import User
-from models.base_model import State
-from models.base_model import Review
-from models.base_model import Amenity
+from models.place import Place
+from models.city import City
+from models.user import User
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
 from models.user import User
 
 class FileStorage:
