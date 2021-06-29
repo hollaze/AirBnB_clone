@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 """ Test module """
-from models.base_model import BaseModel
+import models
+import os
 import unittest
+from time import sleep
+from models.base_model import BaseModel
+from datetime import datetime
 
 
 class TestBaseModel(unittest.TestCase):
@@ -11,12 +15,25 @@ class TestBaseModel(unittest.TestCase):
     def test_if_exist(self):
         self.assertEqual(BaseModel, type(BaseModel()))
 
+    def test_id_is_str(self):
+        self.assertEqual(str, type(BaseModel().id))
+
+    def test_different_id(self):
+        b1 = BaseModel()
+        b2 = BaseModel()
+        self.assertNotEqual(b1.id, b2.id)
+
+    def test_created_at_is_datatime(self):
+        self.assertEqual(datetime, type(BaseModel().created_at))
+
     def test_save(self):
         bm = BaseModel()
-        update_time = bm.updated_at
+        sleep(0.05)
+        time = bm.created_at
         bm.save()
-        self.assertLess(update_time, bm.updated_at)
+        self.assertEqual(time, bm.created_at)
         
+
     #def test_to_dict(self):
 
     #def test_id(self):
