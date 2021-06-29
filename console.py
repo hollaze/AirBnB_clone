@@ -2,6 +2,7 @@
 """
 Console module
 """
+import ast
 import cmd
 from models.base_model import BaseModel
 from models.place import Place
@@ -57,16 +58,32 @@ class HBNBCommand(cmd.Cmd):
         Change the interactive prompt:
             (hbnb)
         """
-
         self.prompt = prompt
 
     def emptyline(self):
         """
         Do nothing upon receiving an empty line
         """
-
         pass
 
+    def do_EOF(self, arg):
+        """
+        Exit the console
+
+        Usage:
+            EOF
+        """
+        print()
+        return True
+
+    def do_quit(self, arg):
+        """
+        Quit command to exit the console
+
+        Usage:
+            quit
+        """
+        return True
     def do_create(self, args):
         """
         Create a new instance of a class, saves
@@ -75,7 +92,6 @@ class HBNBCommand(cmd.Cmd):
         Usage:
             create <class name>
         """
-
         if len(args) == 0:
             print('** class name missing **')
         elif args not in self.class_list:
@@ -93,7 +109,6 @@ class HBNBCommand(cmd.Cmd):
         Usage:
             show <class name> <id>
         """
-
         args_list = args.split()
         objs_dict = models.storage.all()
         if len(args_list) == 0:
@@ -115,7 +130,6 @@ class HBNBCommand(cmd.Cmd):
         Usage:
             destroy <class name> <id>
         """
-
         args_list = args.split()
         objs_dict = models.storage.all()
         if len(args_list) == 0:
@@ -138,7 +152,6 @@ class HBNBCommand(cmd.Cmd):
             all
             all <classname>
         """
-
         args_list = args.split()
         obj_list = []
         if args not in self.class_list and len(args_list) > 0:
@@ -183,24 +196,15 @@ class HBNBCommand(cmd.Cmd):
             u.__dict__[args_list[2]] = eval(args_list[3])
             u.save()
 
-    def do_EOF(self, arg):
-        """
-        Exit the console
+   # def do_count(self, arg):
+    #    """
+     #   """
 
-        Usage:
-            EOF
-        """
-        print()
-        return True
+    #def default(self, line):
+     #   """
+      #  Change the default behavior to <class>.cmds()
+       # """
 
-    def do_quit(self, arg):
-        """
-        Quit command to exit the console
-
-        Usage:
-            quit
-        """
-        return True
 
 
 if __name__ == '__main__':
