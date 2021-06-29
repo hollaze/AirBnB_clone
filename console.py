@@ -13,31 +13,20 @@ class HBNBCommand(cmd.Cmd):
     """
         Command line interpreter
     """
-    class_list = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
+    class_list = ['BaseModel', 'User', 'State',
+                  'City', 'Amenity', 'Place', 'Review']
     prompt = "(hbnb) "
-    
+
     def __do_prompt(self, prompt):
         """Change the interactive prompt:
             (hbnb) 
         """
         self.prompt = prompt
     
-    def do_EOF(self, arg):
-        """Exit the console:
-            input: Ctrl+D
-
-            Usage:
-                    EOF
+    def emptyline(self):
+        """Do nothin upon receiving an empty line
         """
-        print()
-        return True
-
-    def do_quit(self, arg):
-        """Quit command to exit the console
-            Usage:
-                    quit
-        """
-        return True
+        pass
 
     def do_create(self, args):
         """ Create a new instance and saves
@@ -54,7 +43,7 @@ class HBNBCommand(cmd.Cmd):
             new_inst = eval(args)()
             new_inst.save()
             print(new_inst.id)
-                      
+
     def do_show(self, args):
         """
             Prints the string representation of an instance
@@ -103,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
         """
             Prints all string representation of all instances
         """
-        args_list = args.split()        
+        args_list = args.split()
         obj_list = []
         if args not in self.class_list and len(args_list) > 0:
             print("** class doesn't exist **")
@@ -114,7 +103,7 @@ class HBNBCommand(cmd.Cmd):
                 if key_name_id[0] in self.class_list:
                     obj_list.append(str(all_objs[key]))
                 elif len(args_list) == 0:
-                    obj_list.append(str(all_objs[key]))   
+                    obj_list.append(str(all_objs[key]))
         print(obj_list)
 
     def do_update(self, args):
@@ -140,11 +129,22 @@ class HBNBCommand(cmd.Cmd):
             print('** attribute name missing **')
         elif len(args_list) == 3:
             print('** value missing **')
-        #else:
+        # else:
 
-            
-            
-            
-       
+    def do_EOF(self, arg):
+        """Exit the console
+        Usage:
+                EOF"""
+        print()
+        return True
+
+    def do_quit(self, arg):
+        """Quit command to exit the console
+        Usage:
+                quit"""
+        return True
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
+    
