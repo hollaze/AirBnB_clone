@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Console module
+Console module
 """
 import cmd
 from models.base_model import BaseModel
@@ -16,8 +16,38 @@ import models.engine
 
 class HBNBCommand(cmd.Cmd):
     """
-        Command line interpreter
+    Command line interpreter
+    
+    Attributes:
+    -----------
+    class_list: list[str]
+        A list of classes, to usefull for using commands
+    prompt: str
+        Prompt of the new console
+
+    Methods:
+    --------
+    __do_prompt(prompt):
+        Gives prompt of the new console
+    emptyline():
+        Do nothing upon receiving an empty line
+    do_create(args):
+        Create a new instance of a class, saves
+        it to a JSON file and prints the id
+    do_show(args):
+        Prints the string representation of an instance
+        based on a class name and id
+    do_destroy(args):
+        Deletes an instance based on the class name and id
+        Saves the change into the JSON file
+    do_all(args):
+        Prints all string representation of all instances
+    do_updates(args):
+        Updates an instance based on the class name and id
+        by adding or updating attribute, saves the change into
+        the JSON file
     """
+    
     class_list = ['BaseModel', 'User', 'State',
                   'City', 'Amenity', 'Place', 'Review']
     prompt = "(hbnb) "
@@ -39,8 +69,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """
-        Create a new instance and saves
-        it to a JSON file
+        Create a new instance of a class, saves
+        it to a JSON file and prints the id
 
         Usage:
             create <class name>
@@ -58,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, args):
         """
         Prints the string representation of an instance
-        based on a class name
+        based on a class name and id
 
         Usage:
             show <class name> <id>
@@ -126,7 +156,8 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, args):
         """
         Updates an instance based on the class name and id
-        by adding or updating attribute
+        by adding or updating attribute, saves the change into
+        the JSON file
 
         Usage:
             update <class name> <id> <attributate name> <"attribute value">
