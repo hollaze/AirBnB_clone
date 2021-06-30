@@ -284,6 +284,7 @@ class HBNBCommand(cmd.Cmd):
         elif args[:8] == ".count()":
             all_objs = {k: v for (k, v) in models.storage.all().items()
                         if type(v) == eval(class_name)}
+            print(len(all_objs))
         elif args[:9] == '.destroy(':
             self.do_destroy(class_name + ' ' + args[10:-2])
         else:
