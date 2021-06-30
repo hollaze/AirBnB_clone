@@ -110,6 +110,21 @@ class Test_Place_Instantiation(unittest.TestCase):
         self.assertNotEqual(old_updated_at, new_updated_at)
         self.assertEqual(old_created_at, new_created_at)
         self.assertTrue(mock_storage.save.called)
+        
+    def test_keys_to_dict(self):
+        basemodel = BaseModel()
+        self.assertEqual(type(basemodel.__dict__), dict)
+        self.assertIn("__class__", basemodel.to_dict())
+        self.assertIn("created_at", basemodel.to_dict())
+        self.assertIn("updated_at", basemodel.to_dict())
+        self.assertIn("id", basemodel.to_dict())
+        
+    def test_new_key_to_dict(self):
+        basemodel = BaseModel()
+        basemodel.name = "Holberton"
+        basemodel.my_number = 89
+        self.assertIn("name", basemodel.to_dict())
+        self.assertIn("my_number", basemodel.to_dict())
                 
 if __name__ == '__main__':
     unittest.main()
