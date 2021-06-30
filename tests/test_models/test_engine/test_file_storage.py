@@ -17,10 +17,5 @@ class Test_FileStorage(unittest.TestCase):
         filestorage = models.FileStorage()
         self.assertEqual(dict, type(filestorage._FileStorage__objects))
 
-    def test_all(self):
-        filestorage = models.FileStorage()
-        self.assertGreater(len(filestorage._FileStorage__objects), 0)
-
-
 if __name__ == '__main__':
     unittest.main()
