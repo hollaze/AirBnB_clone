@@ -8,12 +8,12 @@ from unittest import mock
 
 class Test_user_Attributes(unittest.TestCase):
     
-    def test_user_id(self):
+    def test_user_email(self):
         user = User()
         self.assertEqual(str, type(user.email))
         self.assertEqual(user.email, "")
         
-    def test_user_id(self):
+    def test_user_password(self):
         user = User()
         self.assertEqual(str, type(user.password))
         self.assertEqual(user.password, "")
