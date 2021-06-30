@@ -12,7 +12,8 @@ class Test_Amenity_Attributes(unittest.TestCase):
         amenity = Amenity()
         self.assertEqual(str, type(amenity.name))
         self.assertEqual(amenity.name, "")
-        
+
+
 class Test_Amenity_Instantiation(unittest.TestCase):
     def test_if_exist(self):
         """
@@ -23,7 +24,7 @@ class Test_Amenity_Instantiation(unittest.TestCase):
     def test_type(self):
         """
         Check if id is of type string
-        Check if the datatime created_at is set up properly 
+        Check if the datatime created_at is set up properly
         """
         amenity = Amenity()
         self.assertEqual(str, type(amenity.id))
@@ -31,19 +32,21 @@ class Test_Amenity_Instantiation(unittest.TestCase):
 
     def test_differents(self):
         """
-        Checking for different id, updated_at, created_at of different instance"""
+        Checking for different id, updated_at, created_at of different instance
+        """
         a1 = Amenity()
         a2 = Amenity()
         self.assertNotEqual(a1.id, a2.id)
         self.assertNotEqual(a1.updated_at, a2.updated_at)
         self.assertNotEqual(a1.created_at, a2.created_at)
-        
+
     def test_str(self):
         """
         Testing str
         """
         a1 = Amenity()
-        self.assertEqual("[{}] ({}) {}".format(a1.__class__.__name__, a1.id, a1.__dict__), str(a1))
+        self.assertEqual("[{}] ({}) {}".format(
+            a1.__class__.__name__, a1.id, a1.__dict__), str(a1))
 
     @mock.patch('models.storage')
     def test_save(self, mock_storage):
@@ -58,7 +61,7 @@ class Test_Amenity_Instantiation(unittest.TestCase):
         self.assertNotEqual(old_updated_at, new_updated_at)
         self.assertEqual(old_created_at, new_created_at)
         self.assertTrue(mock_storage.save.called)
-        
+
     def test_keys_to_dict(self):
         amenity = Amenity()
         self.assertEqual(type(amenity.__dict__), dict)
@@ -66,13 +69,14 @@ class Test_Amenity_Instantiation(unittest.TestCase):
         self.assertIn("created_at", amenity.to_dict())
         self.assertIn("updated_at", amenity.to_dict())
         self.assertIn("id", amenity.to_dict())
-        
+
     def test_new_key_to_dict(self):
         amenity = Amenity()
         amenity.name = "Holberton"
         amenity.my_number = 89
         self.assertIn("name", amenity.to_dict())
         self.assertIn("my_number", amenity.to_dict())
-                
+
+
 if __name__ == '__main__':
     unittest.main()

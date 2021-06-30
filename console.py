@@ -18,7 +18,7 @@ import models.engine
 class HBNBCommand(cmd.Cmd):
     """
     Command line interpreter
-    
+
     Attributes:
     -----------
     class_list: list[str]
@@ -48,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
         by adding or updating attribute, saves the change into
         the JSON file
     """
-    
+
     class_list = ['BaseModel', 'User', 'State',
                   'City', 'Amenity', 'Place', 'Review']
     prompt = "(hbnb) "
