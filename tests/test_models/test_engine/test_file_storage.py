@@ -21,9 +21,6 @@ class Test_FileStorage(unittest.TestCase):
         filestorage = models.FileStorage()
         self.assertGreater(len(filestorage._FileStorage__objects), 0)
         
-    def test_new(self):
-        filestorage = models.FileStorage()
-        self.assertIn()
         
 if __name__ == '__main__':
     unittest.main()
