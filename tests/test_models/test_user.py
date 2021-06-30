@@ -7,27 +7,28 @@ from unittest import mock
 
 
 class Test_user_Attributes(unittest.TestCase):
-    
+
     def test_email(self):
         user = User()
         self.assertEqual(str, type(user.email))
         self.assertEqual(user.email, "")
-        
+
     def test_password(self):
         user = User()
         self.assertEqual(str, type(user.password))
         self.assertEqual(user.password, "")
-        
+
     def test_first_name(self):
         user = User()
         self.assertEqual(str, type(user.first_name))
         self.assertEqual(user.first_name, "")
-        
+
     def test_last_name(self):
         user = User()
         self.assertEqual(str, type(user.last_name))
         self.assertEqual(user.last_name, "")
-        
+
+
 class Test_user_Instantiation(unittest.TestCase):
     def test_if_exist(self):
         """
@@ -38,7 +39,7 @@ class Test_user_Instantiation(unittest.TestCase):
     def test_type(self):
         """
         Check if id is of type string
-        Check if the datatime created_at is set up properly 
+        Check if the datatime created_at is set up properly
         """
         user = User()
         self.assertEqual(str, type(user.id))
@@ -46,19 +47,22 @@ class Test_user_Instantiation(unittest.TestCase):
 
     def test_differents(self):
         """
-        Checking for different id, updated_at, created_at of different instance"""
+        Checking for different id, updated_at, created_at
+        of different instance
+        """
         u1 = User()
         u2 = User()
         self.assertNotEqual(u1.id, u2.id)
         self.assertNotEqual(u1.updated_at, u2.updated_at)
         self.assertNotEqual(u1.created_at, u2.created_at)
-        
+
     def test_str(self):
         """
         Testing str
         """
         u1 = User()
-        self.assertEqual("[{}] ({}) {}".format(u1.__class__.__name__, u1.id, u1.__dict__), str(u1))
+        self.assertEqual("[{}] ({}) {}".format(
+            u1.__class__.__name__, u1.id, u1.__dict__), str(u1))
 
     @mock.patch('models.storage')
     def test_save(self, mock_storage):
@@ -73,7 +77,7 @@ class Test_user_Instantiation(unittest.TestCase):
         self.assertNotEqual(old_updated_at, new_updated_at)
         self.assertEqual(old_created_at, new_created_at)
         self.assertTrue(mock_storage.save.called)
-        
+
     def test_keys_to_dict(self):
         user = User()
         self.assertEqual(type(user.__dict__), dict)
@@ -81,13 +85,14 @@ class Test_user_Instantiation(unittest.TestCase):
         self.assertIn("created_at", user.to_dict())
         self.assertIn("updated_at", user.to_dict())
         self.assertIn("id", user.to_dict())
-        
+
     def test_new_key_to_dict(self):
         user = User()
         user.name = "Holberton"
         user.my_number = 89
         self.assertIn("name", user.to_dict())
         self.assertIn("my_number", user.to_dict())
-                
+
+
 if __name__ == '__main__':
     unittest.main()

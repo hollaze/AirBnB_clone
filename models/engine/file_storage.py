@@ -10,6 +10,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.user import User
 
+
 class FileStorage:
     __file_path = "file.json"
     __objects = {}
@@ -35,6 +36,6 @@ class FileStorage:
                 dict_file = {}
                 dict_file = json.load(file)
                 for key, value in dict_file.items():
-                    self.new(eval(value['__class__'])(**value)) 
+                    self.new(eval(value['__class__'])(**value))
         except Exception:
             pass
