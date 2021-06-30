@@ -7,11 +7,21 @@
 
 Clone this repositary:
 
-    ~/Documents/Holberton/AirBnB_clone$ git clone https://github.com/hollaze/AirBnB_clone.git 
+    $ git clone https://github.com/hollaze/AirBnB_clone.git 
 
-Open the command interpreter:
+Access the folder:
 
-    ~/Documents/Holberton/AirBnB_clone$ ./console.py
+    $ cd AirBnB_clone
+
+You can access the console via two modes.
+
+Interactive mode:
+
+    $ ./console.py
+
+Non-interactive mode:
+
+    $ echo "<command>" | ./console.py
 
 ## How tu use it
 
