@@ -5,14 +5,22 @@ AirBnB_clone
 
 # Command interpreter
 
-## How to start it
+## Installation
+
+Clone this repositary:
+
+    ~/Documents/Holberton/AirBnB_clone$ git clone https://github.com/hollaze/AirBnB_clone.git 
+
+Open the command interpreter:
+
+    ~/Documents/Holberton/AirBnB_clone$ ./console.py
 
 ## How tu use it
 
 ### Examples
 
-#### Authors
+### Authors
 
 [Etienne Brun](https://github.com/EtienneBrJ) <2696@holbertonschool.com>
-.
+
 [Alrick Deperiers](https://github.com/hollaze) <2794@holbertonschool.com>
