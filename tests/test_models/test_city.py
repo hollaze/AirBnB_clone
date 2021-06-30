@@ -8,12 +8,12 @@ from unittest import mock
 
 class Test_City_Attributes(unittest.TestCase):
     
-    def test_city_state_id(self):
+    def test_state_id(self):
         city = City()
         self.assertEqual(str, type(city.state_id))
         self.assertEqual(city.state_id, "")
         
-    def test_user_name(self):
+    def test_name(self):
         city = City()
         self.assertEqual(str, type(city.name))
         self.assertEqual(city.name, "")
