@@ -2,7 +2,6 @@
 """
 Console module
 """
-import ast
 import cmd
 from models.base_model import BaseModel
 from models.place import Place
@@ -13,7 +12,6 @@ from models.review import Review
 from models.amenity import Amenity
 from models.engine.file_storage import FileStorage
 import models
-import re
 
 
 class HBNBCommand(cmd.Cmd):
