@@ -11,8 +11,8 @@ from models.user import User
 from models.state import State
 from models.review import Review
 from models.amenity import Amenity
+from models.engine.file_storage import FileStorage
 import models
-import models.engine
 
 
 class HBNBCommand(cmd.Cmd):
@@ -84,6 +84,7 @@ class HBNBCommand(cmd.Cmd):
             quit
         """
         return True
+
     def do_create(self, args):
         """
         Create a new instance of a class, saves
@@ -156,14 +157,14 @@ class HBNBCommand(cmd.Cmd):
         obj_list = []
         if args not in self.class_list and len(args_list) > 0:
             print("** class doesn't exist **")
+            return
         else:
             all_objs = models.storage.all()
-            for key in all_objs.keys():
-                key_name_id = key.split('.')
-                if key_name_id[0] in self.class_list:
-                    obj_list.append(str(all_objs[key]))
+            for obj in all_objs.values():
+                if len(args) > 0 and args_list[0] == obj.__class__.__name__:
+                    obj_list.append(obj.__str__())
                 elif len(args_list) == 0:
-                    obj_list.append(str(all_objs[key]))
+                    obj_list.append(obj.__str__())
             print(obj_list)
 
     def do_update(self, args):
@@ -195,17 +196,6 @@ class HBNBCommand(cmd.Cmd):
             u = objs_dict[key]
             u.__dict__[args_list[2]] = eval(args_list[3])
             u.save()
-
-   # def do_count(self, arg):
-    #    """
-     #   """
-
-    #def default(self, line):
-     #   """
-      #  Change the default behavior to <class>.cmds()
-       # """
-
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
