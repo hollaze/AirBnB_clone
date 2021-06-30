@@ -14,4 +14,5 @@ AirBnB_clone
 #### Authors
 
 [Etienne Brun](https://github.com/EtienneBrJ) <2696@holbertonschool.com>
+
 [Alrick Deperiers](https://github.com/hollaze) <2794@holbertonschool.com>
