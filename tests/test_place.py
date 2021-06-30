@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 from models.place import Place
 from datetime import datetime
 import unittest
+from unittest import mock
 
 
 class Test_Place_Attributes(unittest.TestCase):
@@ -64,7 +65,51 @@ class Test_Place_Attributes(unittest.TestCase):
         self.assertEqual(type(place.amenity_ids), list)
         self.assertEqual(len(place.amenity_ids), 0)
         
-    
+class Test_Place_Instantiation(unittest.TestCase):
+    def test_if_exist(self):
+        """
+        Check if its created properly
+        """
+        self.assertEqual(Place, type(Place()))
+
+    def test_type(self):
+        """
+        Check if id is of type string
+        Check if the datatime created_at is set up properly 
+        """
+        place = Place()
+        self.assertEqual(str, type(place.id))
+        self.assertEqual(datetime, type(place.created_at))
+
+    def test_differents(self):
+        """
+        Checking for different id, updated_at, created_at of different instance"""
+        p1 = Place()
+        p2 = Place()
+        self.assertNotEqual(p1.id, p2.id)
+        self.assertNotEqual(p1.updated_at, p2.updated_at)
+        self.assertNotEqual(p1.created_at, p2.created_at)
+        
+    def test_str(self):
+        """
+        Testing str
+        """
+        p1 = Place()
+        self.assertEqual("[{}] ({}) {}".format(p1.__class__.__name__, p1.id, p1.__dict__), str(p1))
+
+    @mock.patch('models.storage')
+    def test_save(self, mock_storage):
+        """Test that save method updates `updated_at` and calls
+        `storage.save`"""
+        inst = Place()
+        old_created_at = inst.created_at
+        old_updated_at = inst.updated_at
+        inst.save()
+        new_created_at = inst.created_at
+        new_updated_at = inst.updated_at
+        self.assertNotEqual(old_updated_at, new_updated_at)
+        self.assertEqual(old_created_at, new_created_at)
+        self.assertTrue(mock_storage.save.called)
                 
 if __name__ == '__main__':
     unittest.main()
