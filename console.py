@@ -2,7 +2,6 @@
 """
 Console module
 """
-import cmd
 from models.base_model import BaseModel
 from models.place import Place
 from models.city import City
@@ -12,6 +11,7 @@ from models.review import Review
 from models.amenity import Amenity
 from models.engine.file_storage import FileStorage
 import models
+import cmd
 
 
 class HBNBCommand(cmd.Cmd):
@@ -152,7 +152,6 @@ class HBNBCommand(cmd.Cmd):
             all
             all <classname>
         """
-        
         args_list = args.split()
         obj_list = []
         if args not in self.class_list and len(args_list) > 0:
@@ -198,78 +197,93 @@ class HBNBCommand(cmd.Cmd):
             u.save()
 
     def do_User(self, args):
-        """Differents usages:
-        User.all() - displays all objects of class User
-        User.count() - displays number of objects of class User
-        User.show(<id>) - displays object of class User with id
-        User.destroy(<id>) - deletes object of class User with id
+        """
+        Usage:
+                User.all() - displays all objects of class User
+                User.count() - displays number of objects of class User
+                User.show("id") - displays object of class User with id
+                User.destroy("id") - deletes object of class User with id
         """
         self._execute('User', args)
 
     def do_BaseModel(self, args):
-        """Differents usages:
-        BaseModel.all() - displays all objects of class BaseModel
-        BaseModel.count() - displays number of objects of class BaseModel
-        BaseModel.show(<id>) - displays object of class BaseModel with id
-        BaseModel.destroy(<id>) - deletes object of class BaseModel with id
+        """
+        Usage:
+                BaseModel.all() - displays all objects of class BaseMod
+                BaseModel.count() - displays number of objects of class BaseMod
+                BaseModel.show("id") - displays object of class BaseMod with id
+                BaseModel.destroy("id") - deletes object of class BaseM with id
         """
         self._execute('BaseModel', args)
 
     def do_State(self, args):
-        """Differents usages:
-        State.all() - displays all objects of class State
-        State.count() - displays number of objects of class State
-        State.show(<id>) - displays object of class State with id
-        State.destroy(<id>) - deletes object of class BaseModel with id
+        """
+        Usage:
+                State.all() - displays all objects of class State
+                State.count() - displays number of objects of class State
+                State.show("id") - displays object of class State with id
+                State.destroy("id") - deletes object of class BaseModel with id
         """
         self._execute('State', args)
 
     def do_City(self, args):
-        """Differents usages:
-        City.all() - displays all objects of class City
-        City.count() - displays number of objects of class City
-        City.show(<id>) - displays object of class City with id
-        City.destroy(<id>) - deletes object of class City with id
+        """
+        Usage:
+                City.all() - displays all objects of class City
+                City.count() - displays number of objects of class City
+                City.show("id") - displays object of class City with id
+                City.destroy("id") - deletes object of class City with id
         """
         self._execute('City', args)
 
     def do_Amenity(self, args):
-        """Differents usages:
-        Amenity.all() - displays all objects of class Amenity
-        Amenity.count() - displays number of objects of class Amenity
-        Amenity.show(<id>) - displays object of class Amenity with id
-        Amenity.destroy(<id>) - deletes object of class Amenity with id
+        """
+        Usage:
+                Amenity.all() - displays all objects of class Amenity
+                Amenity.count() - displays number of objects of class Amenity
+                Amenity.show("id") - displays object of class Amenity with id
+                Amenity.destroy("id") - deletes object of class Amenity with id
         """
         self._execute('Amenity', args)
 
     def do_Place(self, args):
-        """Differents usages:
-        Place.all() - displays all objects of class Place
-        Place.count() - displays number of objects of class Place
-        Place.show(<id>) - displays object of class Place with id
-        Place.destroy(<id>) - deletes object of class Place with id
+        """
+        Usage:
+                Place.all() - displays all objects of class Place
+                Place.count() - displays number of objects of class Place
+                Place.show("id") - displays object of class Place with id
+                Place.destroy("id") - deletes object of class Place with id
         """
         self._execute('Place', args)
 
     def do_Review(self, args):
-        """Differents usages:
-        Review.all() - displays all objects of class Review
-        Review.count() - displays number of objects of class Review
-        Review.show(<id>) - displays object of class Review with id
-        Review.destroy(<id>) - deletes object of class Review with id
+        """
+        Usage:
+                Review.all() - displays all objects of class Review
+                Review.count() - displays number of objects of class Review
+                Review.show("id") - displays object of class Review with id
+                Review.destroy("id") - deletes object of class Review with id
         """
         self._execute('Review', args)
 
     def _execute(self, class_name, args):
-        """Exec function for <class name>.action()"""
+        """
+        Wrapper function for <class name>.action():
+
+            <class name>.all() - displays all objects of <class name>
+            <class name>.count() - displays number of objects of <class name>
+            <class name>.show("id") - displays object of <class name> with id
+            <class name>.destroy("id") - deletes object of <class name> with id
+        """
         if args[:6] == '.all()':
             self.do_all(class_name)
         elif args[:6] == '.show(':
+            print(class_name)
+            print(args[7:-2])
             self.do_show(class_name + ' ' + args[7:-2])
         elif args[:8] == ".count()":
             all_objs = {k: v for (k, v) in models.storage.all().items()
-                        if isinstance(v, eval(class_name))}
-            print(len(all_objs))
+                        if type(v) == eval(class_name)}
         elif args[:9] == '.destroy(':
             self.do_destroy(class_name + ' ' + args[10:-2])
         else:
