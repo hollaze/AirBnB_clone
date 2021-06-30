@@ -111,19 +111,19 @@ class Test_Place_Instantiation(unittest.TestCase):
         self.assertTrue(mock_storage.save.called)
         
     def test_keys_to_dict(self):
-        basemodel = BaseModel()
-        self.assertEqual(type(basemodel.__dict__), dict)
-        self.assertIn("__class__", basemodel.to_dict())
-        self.assertIn("created_at", basemodel.to_dict())
-        self.assertIn("updated_at", basemodel.to_dict())
-        self.assertIn("id", basemodel.to_dict())
+        place = Place()
+        self.assertEqual(type(place.__dict__), dict)
+        self.assertIn("__class__", place.to_dict())
+        self.assertIn("created_at", place.to_dict())
+        self.assertIn("updated_at", place.to_dict())
+        self.assertIn("id", place.to_dict())
         
     def test_new_key_to_dict(self):
-        basemodel = BaseModel()
-        basemodel.name = "Holberton"
-        basemodel.my_number = 89
-        self.assertIn("name", basemodel.to_dict())
-        self.assertIn("my_number", basemodel.to_dict())
+        place = Place()
+        place.name = "Holberton"
+        place.my_number = 89
+        self.assertIn("name", place.to_dict())
+        self.assertIn("my_number", place.to_dict())
                 
 if __name__ == '__main__':
     unittest.main()
