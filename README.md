@@ -20,23 +20,23 @@ We have created a command line that allows us to manage objects that store data.
 
 The console supports the following commands :
 
-Create an object of the class name:
+*   Create an object of the class name:
 
     (hbnb) create class_name
 
-Display object information if it exists:
+*   Display object information if it exists:
 
     (hbnb) show class_name id
 
-Delete the object if its exists:
+*   Delete the object if its exists:
 
     (hbnb) destroy class_name id
 
-Display all instances, or only instances of the specified objects:
+*   Display all instances, or only instances of the specified objects:
 
     (hbnb) all / (hbnb) all class_name
 
-Update an instance attribute of a previously declared object:
+*   Update an instance attribute of a previously declared object:
 
     (hbnb) update class_name id attribute_name attribute_value
 
@@ -44,19 +44,19 @@ Update an instance attribute of a previously declared object:
 
 Additionally, you can use the following command formats :
 
-Display the number of instances of the specified class:
+*   Display the number of instances of the specified class:
 
     (hbnb) class_name.count()
 
-Display object information if it exists:
+*   Display object information if it exists:
 
     (hbnb) class_name.show(id)
 
-Delete the object if its exists:
+*   Delete the object if its exists:
 
     (hbnb) class_name.destroy(id)
 
-Display all instances of the specified objects:
+*   Display all instances of the specified objects:
 
     (hbnb) class_name.all()
 
