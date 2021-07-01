@@ -42,10 +42,26 @@ class HBNBCommand(cmd.Cmd):
         Saves the change into the JSON file
     do_all(args):
         Prints all string representation of all instances
-    do_updates(args):
+    do_update(args):
         Updates an instance based on the class name and id
         by adding or updating attribute, saves the change into
         the JSON file
+    do_User(args):
+        Use: all, count, show, destroy functions for User object
+    do_BaseModel(args):
+        Use: all, count, show, destroy functions for BaseModel object
+    do_State(args):
+        Use: all, count, show, destroy functions for State object
+    do_City(args):
+        Use: all, count, show, destroy functions for City object
+    do_Amenity(args):
+        Use: all, count, show, destroy functions for Amenity object
+    do_Place(args):
+        Use: all, count, show, destroy functions for Place object
+    do_Review(args):
+        Use: all, count, show, destroy functions for Review object
+    _execute(class_name, args):
+        Wrapper function for <class name>.action()
     """
 
     class_list = ['BaseModel', 'User', 'State',
@@ -70,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
         Exit the console
 
         Usage:
-            EOF
+                EOF
         """
         print()
         return True
@@ -80,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
         Quit command to exit the console
 
         Usage:
-            quit
+                quit
         """
         return True
 
@@ -90,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
         it to a JSON file and prints the id
 
         Usage:
-            create <class name>
+                create <class name>
         """
         if len(args) == 0:
             print('** class name missing **')
@@ -107,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
         based on a class name and id
 
         Usage:
-            show <class name> <id>
+                show <class name> <id>
         """
         args_list = args.split()
         objs_dict = models.storage.all()
@@ -128,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
         Saves the change into the JSON file
 
         Usage:
-            destroy <class name> <id>
+                destroy <class name> <id>
         """
         args_list = args.split()
         objs_dict = models.storage.all()
@@ -149,8 +165,8 @@ class HBNBCommand(cmd.Cmd):
         Prints all string representation of all instances
 
         Usage:
-            all
-            all <classname>
+                all
+                all <classname>
         """
         args_list = args.split()
         obj_list = []
@@ -173,7 +189,7 @@ class HBNBCommand(cmd.Cmd):
         the JSON file
 
         Usage:
-            update <class name> <id> <attributate name> <"attribute value">
+                update <class name> <id> <attributate name> <"attribute value">
         """
         args_list = args.split()
         objs_dict = models.storage.all()

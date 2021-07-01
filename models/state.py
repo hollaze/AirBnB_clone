@@ -1,9 +1,19 @@
 #!/usr/bin/python3
-
+"""
+State Module
+"""
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
+    """
+    Instance of BaseModel class
+    
+    Attributes:
+    -----------
+    name : str
+        Name of the state
+    """
     name = ""
 
     def __init__(self, *args, **kwargs):
