@@ -14,6 +14,7 @@ This repo contains the first part of the project which consists in :
 
 # Command interpreter
 
+We have created a command line that allows us to manage objects that store data.
 
 ## Installation
 
