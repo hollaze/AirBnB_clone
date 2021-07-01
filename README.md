@@ -22,7 +22,7 @@ The console supports the following commands :
 
 *   Create an object of the class name:
 
-    (hbnb) create class_name
+        (hbnb) create class_name
 
 *   Display object information if it exists:
 
