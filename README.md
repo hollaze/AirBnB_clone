@@ -16,7 +16,7 @@ This repo contains the first part of the project which consists in :
 
 We have created a command line that allows us to manage objects that store data.
 
-#### Mandatory part
+### Mandatory part
 
 The console supports the following commands :
 
@@ -40,7 +40,7 @@ Update an instance attribute of a previously declared object:
 
     (hbnb) update class_name id attribute_name attribute_value
 
-#### Advanced part
+### Advanced part
 
 Additionally, you can use the following command formats :
 
