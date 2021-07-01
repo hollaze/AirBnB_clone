@@ -22,23 +22,23 @@ The console supports the following commands :
 
 Create an object of the class name:
 
-    create class_name
+    (hbnb) create class_name
 
 Display object information if it exists:
 
-    show class_name id
+    (hbnb) show class_name id
 
 Delete the object if its exists:
 
-    destroy class_name id
+    (hbnb) destroy class_name id
 
 Display all instances, or only instances of the specified objects:
 
-    all or all class_name
+    (hbnb) all or (hbnb) all class_name
 
 Update an instance attribute of a previously declared object:
 
-    update class_name id attribute_name attribute_value
+    (hbnb) update class_name id attribute_name attribute_value
 
 #### Advanced part
 
