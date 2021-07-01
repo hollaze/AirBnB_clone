@@ -16,6 +16,15 @@ This repo contains the first part of the project which consists in :
 
 We have created a command line that allows us to manage objects that store data.
 
+#### Mandatory part
+
+The console supports the following commands :
+
+#### Advanced part
+
+Additionally, you can use the following command formats :
+
+
 ## Installation
 
 Clone this repositary:
