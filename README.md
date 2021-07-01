@@ -26,19 +26,19 @@ The console supports the following commands :
 
 *   Display object information if it exists:
 
-    (hbnb) show class_name id
+        (hbnb) show class_name id
 
 *   Delete the object if its exists:
 
-    (hbnb) destroy class_name id
+        (hbnb) destroy class_name id
 
 *   Display all instances, or only instances of the specified objects:
 
-    (hbnb) all / (hbnb) all class_name
+        (hbnb) all / (hbnb) all class_name
 
 *   Update an instance attribute of a previously declared object:
 
-    (hbnb) update class_name id attribute_name attribute_value
+        (hbnb) update class_name id attribute_name attribute_value
 
 ### Advanced part
 
@@ -46,19 +46,19 @@ Additionally, you can use the following command formats :
 
 *   Display the number of instances of the specified class:
 
-    (hbnb) class_name.count()
+        (hbnb) class_name.count()
 
 *   Display object information if it exists:
 
-    (hbnb) class_name.show(id)
+        (hbnb) class_name.show(id)
 
 *   Delete the object if its exists:
 
-    (hbnb) class_name.destroy(id)
+        (hbnb) class_name.destroy(id)
 
 *   Display all instances of the specified objects:
 
-    (hbnb) class_name.all()
+        (hbnb) class_name.all()
 
 ## Installation
 
