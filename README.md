@@ -20,6 +20,21 @@ We have created a command line that allows us to manage objects that store data.
 
 The console supports the following commands :
 
+Create an object of the class name:
+    create class_name
+
+Display object information if it exists:
+    show class_name id
+
+Delete the object if its exists:
+    destroy class_name id
+
+Display all instances, or only instances of the specified objects:
+    all or all class_name
+
+Update an instance attribute of a previously declared object:
+    update class_name id attribute_name attribute_value
+
 #### Advanced part
 
 Additionally, you can use the following command formats :
@@ -51,6 +66,6 @@ Non-interactive mode:
 
 ### Authors
 
--[Etienne Brun](https://github.com/EtienneBrJ)
+*   [Etienne Brun](https://github.com/EtienneBrJ)
 
--[Alrick Deperiers](https://github.com/hollaze)
+*   [Alrick Deperiers](https://github.com/hollaze)
