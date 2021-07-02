@@ -116,7 +116,7 @@ Helper function:
                 
         (hbnb) 
 
-Advanced commands:
+### Advanced commands:
 
         (hbnb) Amenity.all()
         ["[Amenity] (ad91a8b5-8487-4e17-8bf6-51eda726704b) {'id': 'ad91a8b5-8487-4e17-8bf6-51eda726704b', 'created_at': datetime.datetime(2021, 7, 2, 13, 4, 27, 605079), 'updated_at': datetime.datetime(2021, 7, 2, 13, 4, 27, 605104)}"]
