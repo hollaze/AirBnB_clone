@@ -53,11 +53,12 @@ section.filters .locations {
     width: auto;
     border: #DDDDDD 1px solid;
     border-radius: 4px;
-    /*visibility: hidden;*/
+    visibility: hidden;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 40px;
     position: relative;
+    bottom: 20px;
 }
 
 .locations:hover .popover,
