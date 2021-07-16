@@ -1,0 +1,41 @@
+section.places h1 {
+    font-size: 30px;
+}
+
+section.places article h2 {
+    font-size: 30px;
+    position: relative;
+    bottom: 15px;
+    left: 5%;
+}
+
+section.places article {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: #FF5A5F 1px solid;
+    border-radius: 4px;
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    left: 30px;
+}
+
+#text_lastbox {
+    position: relative;
+    margin-left: 25%;
+}
+
+section.places .price_by_night {
+    color: #FF5A5F;
+    border: #FF5A5F 4px solid;
+    border-radius: 45px;
+    min-width: 60px;
+    height: 60px;
+    font-size: 30px;
+    position: relative;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
