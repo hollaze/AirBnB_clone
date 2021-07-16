@@ -6,7 +6,7 @@ section.places article h2 {
     font-size: 30px;
     position: absolute;
     bottom: 67%;
-    left: auto;
+    margin-left: auto;
 }
 
 section.places article {
@@ -21,7 +21,7 @@ section.places article {
     left: 30px;
 }
 
-#text_lastbox {
+#bottom_box {
     position: relative;
     margin-left: 25%;
 }
@@ -34,10 +34,10 @@ section.places .price_by_night {
     height: 60px;
     font-size: 30px;
     position: relative;
-    left: 160px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    left: 321px;
 }
 
 section.places .information{
@@ -48,43 +48,20 @@ section.places .information{
     width: 100%;
     position: relative;
     right: 34px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 section.places .max_guest,
 section.places .number_rooms,
 section.places .number_bathrooms {
     width: 100px;
-    position: absolute;
-}
-
-
-section.places .max_guest{
-    left: 20px;
-}
-
-section.places .number_rooms{
-    left: 125px;
-}
-
-section.places .number_bathrooms{
-    left: 230px;
-}
-
-section.places .max_guest img,
-section.places .number_rooms img,
-section.places .number_bathrooms img {
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-section.places .max_guest img {
-    left: 5px;
-}
 
-section.places .number_rooms img {
-    left: 14px;
-}
 
-section.places .number_bathrooms img {
-    left: 15px;
-}
