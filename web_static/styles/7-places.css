@@ -1,0 +1,26 @@
+section.places h1 {
+    font-size: 30px;
+}
+
+section.places article h2 {
+    font-size: 30px;
+    position: relative;
+    bottom: 15px;
+}
+
+section.places article {
+    width: 390px;
+    padding: 20px;
+    margin: 20px;
+    border: #FF5A5F 1px solid;
+    border-radius: 4px;
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    left: 30px;
+}
+
+#text_lastbox {
+    position: relative;
+    margin-left: 25%;
+}
