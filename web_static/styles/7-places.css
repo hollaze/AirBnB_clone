@@ -1,26 +1,28 @@
-section.places h1 {
+.places h1 {
+    text-align: left;
+    font-size: 30px;
+    margin-right: 100%;
+}
+
+.places h2 {
+    text-align: center;
     font-size: 30px;
 }
 
-section.places article h2 {
-    font-size: 30px;
-    position: relative;
-    bottom: 15px;
+.places {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
 }
 
-section.places article {
+.places article {
+    display: flex;
+    flex-direction: column;
     width: 390px;
     padding: 20px;
     margin: 20px;
-    border: #FF5A5F 1px solid;
+    border:  #FF5A5F 1px solid;
     border-radius: 4px;
-    display: inline-flex;
-    position: relative;
-    justify-content: center;
-    left: 30px;
-}
-
-#text_lastbox {
-    position: relative;
-    margin-left: 25%;
 }
