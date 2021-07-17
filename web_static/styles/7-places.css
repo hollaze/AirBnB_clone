@@ -18,8 +18,6 @@
 }
 
 .places article {
-    display: flex;
-    flex-direction: column;
     width: 390px;
     padding: 20px;
     margin: 20px;
